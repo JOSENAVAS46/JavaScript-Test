@@ -18,13 +18,13 @@
     <div class="cuerpo">
         <section class="ingresoDatos">
             <p>Nombre: </p>
-            <input type="text" name="nombre" id="inputNombre" placeholder="Pepe" required>
+            <input type="text" required name="nombre" id="inputNombre" placeholder="Pepe" >
             <p>Apellido: </p>
-            <input type="text" name="apellido" id="inputApellido" placeholder="Perez" required>
+            <input type="text" required name="apellido" id="inputApellido" placeholder="Perez">
             <p>Correo: </p>
-            <input type="text" name="correo" id="inputCorreo" placeholder="pepe_perez@gmail.com" required>
+            <input type="text" required name="correo" id="inputCorreo" placeholder="pepe_perez@gmail.com">
             <p>Cedula: </p>
-            <input type="text" name="cedula" id="inputCedula" placeholder="0987654321" required>
+            <input type="text" required name="cedula" id="inputCedula" placeholder="0987654321">
         </section>
         <section class="tablaPersona">
             <table>
@@ -40,9 +40,11 @@
                 <tbody id="cuerpoTabla">
                    
                 </tbody>
-                <tfoot>
+                <tfoot id="pieTabla">
                     <td colspan="3">Total de Registros:</td>
-                    <td></td>
+                    <td id="cont">
+                        0
+                    </td>
                 </tfoot>
             </table>
         </section>
