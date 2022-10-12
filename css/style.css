@@ -1,0 +1,72 @@
+:root {
+    --border_radius: 5px;
+    --border : 1px solid black;
+
+}
+
+* {
+    box-sizing: border-box;
+    margin: 1px;
+    font-family: sans-serif;
+}
+
+.nombre_formulario {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    background: cyan;
+    width: auto;
+    height: 50px;
+}
+
+.botones {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background: orangered;
+    width: auto;
+    height: 50px;
+}
+
+.boton {
+    align-items: center;
+    text-align: center;
+    width: 70px;
+    height: 20px;
+    padding: 1px;
+    border-radius: var(--border_radius);
+    background: orange;
+    cursor: pointer;
+}
+.boton:hover {
+    border: 1px solid black;
+
+}
+
+.cuerpo {
+    background: whitesmoke;
+    width: auto;
+    height: auto;
+}
+
+.ingresoDatos {
+    display: grid;
+    justify-content: center;
+}
+
+table {
+    justify-self: center;
+    border: var(--border);
+    table-layout: auto; 
+    width: 100%;
+    border-collapse: separate;
+}
+
+th {
+    background: #45ebef;
+    font-style: oblique;
+} 
+
+td {
+    border: 1px dotted black;
+}

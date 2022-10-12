@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <header>
+        <div class="nombre_formulario">
+            Registrar Persona
+        </div>
+    </header>
+    <div class="cuerpo">
+        <section class="ingresoDatos">
+            <p>Nombre: </p>
+            <input type="text" name="nombre" id="inputNombre" placeholder="Pepe" required>
+            <p>Apellido: </p>
+            <input type="text" name="apellido" id="inputApellido" placeholder="Perez" required>
+            <p>Correo: </p>
+            <input type="text" name="correo" id="inputCorreo" placeholder="pepe_perez@gmail.com" required>
+            <p>Cedula: </p>
+            <input type="text" name="cedula" id="inputCedula" placeholder="0987654321" required>
+        </section>
+        <section class="tablaPersona">
+            <table>
+                <caption>Personas Registradas:</caption>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Apellido</th>
+                    </tr>
+                </thead>
+                <tbody id="cuerpoTabla">
+                   
+                </tbody>
+                <tfoot>
+                    <td colspan="3">Total de Registros:</td>
+                    <td></td>
+                </tfoot>
+            </table>
+        </section>
+    </div>
+
+    <footer>
+        <div class="botones">
+            <div id="btnReg" class="boton">
+                Registrar
+            </div>
+            <div id="btnClean" class="boton">
+                Limpiar
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="js/scripts.js"></script>
+
+</body>
+
+</html>
