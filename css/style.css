@@ -1,29 +1,36 @@
 :root {
     --border_radius: 5px;
-    --border : 1px solid black;
-
+    --border: 1px solid black;
+    --border_indiv: 2px dotted black;
 }
+
 
 * {
     box-sizing: border-box;
-    margin: 1px;
+    margin: 2px;
     font-family: sans-serif;
 }
 
-.nombre_formulario {
+.bodySection {
+    align-content: space-between;
+}
+
+.div_header {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
-    background: cyan;
+    background-image: radial-gradient( circle farthest-corner at 22.4% 21.7%, rgba(4,189,228,1) 0%, rgba(2,83,185,1) 100.2% );
     width: auto;
-    height: 50px;
+    height: 25px;
+    font-size: x-large;
+    color: whitesmoke;
 }
 
 .botones {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background: orangered;
+    background: whitesmoke;
     width: auto;
     height: 50px;
 }
@@ -31,42 +38,54 @@
 .boton {
     align-items: center;
     text-align: center;
-    width: 70px;
+    width: auto;
     height: 20px;
     padding: 1px;
     border-radius: var(--border_radius);
-    background: orange;
+    border: var(--border);
     cursor: pointer;
 }
-.boton:hover {
-    border: 1px solid black;
 
+.boton:hover {
+    border: 1px dotted black;
+    font-weight: bold;
 }
 
-.cuerpo {
+.contenedor {
+    display: flex;
     background: whitesmoke;
-    width: auto;
-    height: auto;
+    width: 100%;
 }
 
 .ingresoDatos {
     display: grid;
-    justify-content: center;
+    width: auto;
+    justify-content: space-around;
 }
 
-table {
+.tablaPersona {
     justify-self: center;
-    border: var(--border);
-    table-layout: auto; 
+    border-left: var(--border_indiv);
+    table-layout: fixed;
     width: 100%;
+    height: auto;
     border-collapse: separate;
 }
 
-th {
-    background: #45ebef;
-    font-style: oblique;
-} 
+.seccionTabla {
+    display: grid;
+    justify-content: space-around;
+    padding: 2px;
+}
+
+tr,
+td {
+    height: auto;
+}
 
 td {
     border: 1px dotted black;
+    max-width: 100px;
+    overflow: hidden;
+    white-space: nowrap;
 }

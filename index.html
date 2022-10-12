@@ -1,69 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <title>JavaScript</title>
+    <title>CRUD Persona</title>
 </head>
 
 <body>
-    <header>
-        <div class="nombre_formulario">
-            Registrar Persona
-        </div>
-    </header>
-    <div class="cuerpo">
-        <section class="ingresoDatos">
-            <p>Nombre: </p>
-            <input type="text" required name="nombre" id="inputNombre" placeholder="Pepe" >
-            <p>Apellido: </p>
-            <input type="text" required name="apellido" id="inputApellido" placeholder="Perez">
-            <p>Correo: </p>
-            <input type="text" required name="correo" id="inputCorreo" placeholder="pepe_perez@gmail.com">
-            <p>Cedula: </p>
-            <input type="text" required name="cedula" id="inputCedula" placeholder="0987654321">
-        </section>
-        <section class="tablaPersona">
-            <table>
-                <caption>Personas Registradas:</caption>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Correo</th>
-                        <th>Apellido</th>
-                    </tr>
-                </thead>
-                <tbody id="cuerpoTabla">
-                   
-                </tbody>
-                <tfoot id="pieTabla">
-                    <td colspan="3">Total de Registros:</td>
-                    <td id="cont">
-                        0
-                    </td>
-                </tfoot>
-            </table>
-        </section>
-    </div>
-
-    <footer>
-        <div class="botones">
-            <div id="btnReg" class="boton">
-                Registrar
+    <section class="bodySection">
+        <header>
+            <div>CRUD Persona</div>
+        </header>
+        <section>
+            <div class="div_header">Registrar Persona</div>
+            <div class="contenedor">
+                <section class="ingresoDatos">
+                    <p>Nombre:</p>
+                    <input type="text" required name="nombre" id="inputNombreReg" placeholder="Pepe" />
+                    <p>Apellido:</p>
+                    <input type="text" required name="apellido" id="inputApellidoReg" placeholder="Perez" />
+                    <p>Correo:</p>
+                    <input type="text" required name="correo" id="inputCorreoReg" placeholder="pepe_perez@gmail.com" />
+                    <p>Cedula:</p>
+                    <input type="text" required name="cedula" id="inputCedulaReg" placeholder="0987654321" />
+                </section>
+                <section class="seccionTabla">
+                    <table class="tablaPersona">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Correo</th>
+                                <th>Cedula</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTabla"></tbody>
+                        <tfoot id="pieTabla">
+                            <td colspan="4">Total de Registros:</td>
+                            <td id="cont">0</td>
+                        </tfoot>
+                    </table>
+                </section>
             </div>
-            <div id="btnClean" class="boton">
-                Limpiar
+            <div class="botones">
+                <div id="btnReg" class="boton">Registrar</div>
+                <div id="btnCleanReg" class="boton">Limpiar</div>
             </div>
-        </div>
-    </footer>
+        </section>
+        <section>
+            <div class="div_header">Editar Persona</div>
+            <div class="contenedor">
+                <section class="ingresoDatos">
+                    <p>ID:</p>
+                    <div>
+                        <input type="number" required name="id" id="inputIDEdit" placeholder="1" min="1" />
+                        <div id="btnSelect" class="boton">Seleccionar</div>
+                    </div>
+                    <p>Nombre:</p>
+                    <input type="text" required name="nombre" id="inputNombreEdit" placeholder="Pepe" />
+                    <p>Apellido:</p>
+                    <input type="text" required name="apellido" id="inputApellidoEdit" placeholder="Perez" />
+                    <p>Correo:</p>
+                    <input type="text" required name="correo" id="inputCorreoEdit" placeholder="pepe_perez@gmail.com" />
+                    <p>Cedula:</p>
+                    <input type="text" required name="cedula" id="inputCedulaEdit" placeholder="0987654321" />
+                </section>
+            </div>
+            <div class="botones">
+                <div id="btnEdit" class="boton">Editar</div>
+                <div id="btnCleanEdit" class="boton">Limpiar</div>
+            </div>
+        </section>
 
+        <footer>
+
+        </footer>
+    </section>
 
     <script src="js/scripts.js"></script>
-
 </body>
 
 </html>

@@ -1,39 +1,104 @@
+function crearPersona(identificador, name, lastName, email, dni) {
+  let persona = {
+    id: identificador,
+    nombre: name,
+    apellido: lastName,
+    correo: email,
+    cedula: dni
+  }
+  return persona;
+}
+
+
+let lstPersonas = [];
+
+
+
+
+
 const btnReg = document.getElementById("btnReg");
 
-const btnClean = document.getElementById("btnClean");
+const btnCleanReg = document.getElementById("btnCleanReg");
 
-const inputNombre = document.getElementById("inputNombre");
-const inputApellido = document.getElementById("inputApellido");
-const inputCorreo = document.getElementById("inputCorreo");
-const inputCedula = document.getElementById("inputCedula");
+const btnCleanEdit = document.getElementById("btnCleanEdit");
+
+
+const btnSelect = document.getElementById("btnSelect");
+
+
+
+const inputNombreReg = document.getElementById("inputNombreReg");
+const inputApellidoReg = document.getElementById("inputApellidoReg");
+const inputCorreoReg = document.getElementById("inputCorreoReg");
+const inputCedulaReg = document.getElementById("inputCedulaReg");
+
+
+const inputIDEdit = document.getElementById("inputIDEdit");
+const inputNombreEdit = document.getElementById("inputNombreEdit");
+const inputApellidoEdit = document.getElementById("inputApellidoEdit");
+const inputCorreoEdit = document.getElementById("inputCorreoEdit");
+const inputCedulaEdit = document.getElementById("inputCedulaEdit");
 
 const contadorCelda = document.getElementById("cont");
 
 
-var i = 1;
-
 btnReg.addEventListener("click", (e) => {
-  //verificar();
   registrar();
+  llenarTabla();
 });
 
-btnClean.addEventListener("click", (e) => {
-  limpiar();
+btnCleanReg.addEventListener("click", (e) => {
+  limpiarReg();
+});
+
+btnCleanEdit.addEventListener("click", (e) => {
+  limpiarEdit();
+});
+
+btnSelect.addEventListener("click", (e) => {
+  var id = inputIDEdit.value;
+  if (lstPersonas.length >= id) {
+    llenarInputsById(id);
+  } else {
+    alert("No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length);
+  }
 });
 
 function actualizarCont(cont) {
   contadorCelda.innerHTML = cont;
-  i++;
+}
+
+function llenarInputsById(identificador) {
+  lstPersonas.forEach(p => {
+    if (p.id == identificador) {
+      inputNombreEdit.value = p.nombre;
+      inputApellidoEdit.value = p.apellido;
+      inputCorreoEdit.value = p.correo;
+      inputCedulaEdit.value = p.cedula;
+    }
+  });
+}
+
+function registrar() {
+  if (verificar()) {
+    var id = lstPersonas.length + 1;
+    var nombre = inputNombreReg.value;
+    var apellido = inputApellidoReg.value;
+    var correo = inputCorreoReg.value;
+    var cedula = inputCedulaReg.value;
+    p = crearPersona(id, nombre, apellido, correo, cedula);
+    lstPersonas.push(p);
+  }
 }
 
 function verificar() {
   var bnd = false;
-  if (inputNombre.value.length > 0 || inputApellido.value.length > 0
-    || inputCorreo.value.length > 0 || inputCedula.value.length > 0) {
-    if (inputNombre.value.length > 0) {
-      if (inputApellido.value.length > 0) {
-        if (inputCorreo.value.length > 0) {
-          if (inputCedula.value.length > 0) {
+  if (inputNombreReg.value.length > 0 || inputApellidoReg.value.length > 0
+    || inputCorreo.valueReg.length > 0 || inputCedulaReg.value.length > 0) {
+    if (inputNombreReg.value.length > 0) {
+      if (inputApellidoReg.value.length > 0) {
+        if (inputCorreoReg.value.length > 0) {
+          if (inputCedulaReg.value.length > 0) {
             bnd = true;
           } else {
             alert("Ingrese la Cedula")
@@ -47,45 +112,56 @@ function verificar() {
     } else {
       alert("Ingrese el Nombre")
     }
-  }else{
-    bnd = false;
+  } else {
     alert("Ingrese los Campos");
   }
   return bnd;
 }
 
-function registrar() {
-  if (verificar()) {
+
+function llenarTabla() {
+  cuerpoTabla.innerHTML = "";
+  lstPersonas.forEach(p => {
     const cuerpoTabla = document.querySelector("#cuerpoTabla");
     const tr = document.createElement("tr");
 
+    let tdID = document.createElement("td");
+    tdID.textContent = p.id;
+    tr.appendChild(tdID);
+
     let tdNombre = document.createElement("td");
-    tdNombre.textContent = inputNombre.value;
+    tdNombre.textContent = p.nombre;
     tr.appendChild(tdNombre);
 
     let tdApellido = document.createElement("td");
-    tdApellido.textContent = inputApellido.value;
+    tdApellido.textContent = p.apellido;
     tr.appendChild(tdApellido);
 
     let tdCorreo = document.createElement("td");
-    tdCorreo.textContent = inputCorreo.value;
+    tdCorreo.textContent = p.correo;
     tr.appendChild(tdCorreo);
 
     let tdCedula = document.createElement("td");
-    tdCedula.textContent = inputCedula.value;
+    tdCedula.textContent = p.cedula;
     tr.appendChild(tdCedula);
 
     cuerpoTabla.appendChild(tr);
-    actualizarCont(i);
-    limpiar();
-  }
-}
-
-function limpiar() {
-  inputNombre.value = "";
-  inputApellido.value = "";
-  inputCedula.value = "";
-  inputCorreo.value = "";
+    actualizarCont(lstPersonas.length);
+  });
+  limpiarReg();
 }
 
 
+function limpiarReg() {
+  inputNombreReg.value = "";
+  inputApellidoReg.value = "";
+  inputCedulaReg.value = "";
+  inputCorreoReg.value = "";
+}
+
+function limpiarEdit() {
+  inputNombreEdit.value = "";
+  inputApellidoEdit.value = "";
+  inputCedulaEdit.value = "";
+  inputCorreoEdit.value = "";
+}
