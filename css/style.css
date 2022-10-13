@@ -135,3 +135,7 @@ td , th{
     overflow: hidden;
     white-space: nowrap;
 }
+
+input-error{
+    outline: 1px solid red;
+  }
