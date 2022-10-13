@@ -13,14 +13,16 @@
 <body>
     <section class="bodySection">
         <header>
-            <div class="headerTotal"> 
+            <div class="headerTotal">
                 <img src="/assets/icons/CrudPersona.png" alt="CRUD">
-                CRUD Persona</div>
+                CRUD Persona
+            </div>
         </header>
         <section>
             <div class="header_seccion">
                 <img src="/assets/icons/create.png" alt="Create">
-                Registrar Persona</div>
+                Registrar Persona
+            </div>
             <div class="contenedor">
                 <section class="ingresoDatos">
                     <p>Nombre:</p>
@@ -30,11 +32,11 @@
                     <p>Correo:</p>
                     <input type="text" required name="correo" id="inputCorreoReg" placeholder="pepe_perez@gmail.com" />
                     <p>Cedula:</p>
-                    <input type="text" required name="cedula" id="inputCedulaReg" placeholder="0987654321" />
+                    <input type="text" required name="cedula" id="inputCedulaReg" placeholder="0987654321" maxlength="10"/>
                 </section>
                 <section class="seccionTabla">
                     <table class="tablaPersona">
-                        <thead>
+                        <thead class="cabezaTabla">
                             <tr>
                                 <th>ID</th>
                                 <th>Nombre</th>
@@ -43,8 +45,10 @@
                                 <th>Cedula</th>
                             </tr>
                         </thead>
-                        <tbody id="cuerpoTabla"></tbody>
-                        <tfoot id="pieTabla">
+                        <tbody id="cuerpoTabla">
+
+                        </tbody>
+                        <tfoot class="pieTabla" id="pieTabla">
                             <td colspan="4">Total de Registros:</td>
                             <td id="cont">0</td>
                         </tfoot>
@@ -52,8 +56,14 @@
                 </section>
             </div>
             <div class="botones">
-                <div id="btnReg" class="boton">Registrar</div>
-                <div id="btnCleanReg" class="boton">Limpiar</div>
+                <div id="btnReg" class="boton">
+                    <img src="/assets/icons/add.png" alt="Add">
+                    Registrar
+                </div>
+                <div id="btnCleanReg" class="boton">
+                    <img src="/assets/icons/clean.png" alt="Clean">
+                    Limpiar
+                </div>
             </div>
         </section>
         <div class="EditarEliminar">
@@ -61,7 +71,8 @@
                 <div class="headersEditDelete">
                     <div class="header_seccion">
                         <img src="/assets/icons/edit.png" alt="Edit">
-                        Editar Persona</div>
+                        Editar Persona
+                    </div>
                     <section class="ingresoDatos">
                         <p>ID:</p>
                         <div>
@@ -76,19 +87,26 @@
                         <input type="text" required name="correo" id="inputCorreoEdit"
                             placeholder="pepe_perez@gmail.com" />
                         <p>Cedula:</p>
-                        <input type="text" required name="cedula" id="inputCedulaEdit" placeholder="0987654321" />
+                        <input type="text" required name="cedula" id="inputCedulaEdit" placeholder="0987654321" maxlength="10"/>
                     </section>
                 </div>
                 <div class="botones">
-                    <div id="btnEdit" class="boton">Editar</div>
-                    <div id="btnCleanEdit" class="boton">Limpiar</div>
+                    <div id="btnEdit" class="boton">
+                        <img src="/assets/icons/update.png" alt="Edit">
+                        Editar
+                    </div>
+                    <div id="btnCleanEdit" class="boton">
+                        <img src="/assets/icons/clean.png" alt="Clean">
+                        Limpiar
+                    </div>
                 </div>
             </section>
             <section class="contenedorEditDelete">
                 <div>
                     <div class="header_seccion">
                         <img src="/assets/icons/delete.png" alt="Delete">
-                        Eliminar Persona</div>
+                        Eliminar Persona
+                    </div>
 
                     <section class="ingresoDatos">
                         <p>ID:</p>
@@ -107,8 +125,14 @@
                     </section>
                 </div>
                 <div class="botones">
-                    <div id="btnDel" class="boton">Eliminar</div>
-                    <div id="btnCleanDel" class="boton">Limpiar</div>
+                    <div id="btnDel" class="boton">
+                        <img src="/assets/icons/remove.png" alt="Clean">
+                        Eliminar
+                    </div>
+                    <div id="btnCleanDel" class="boton">
+                        <img src="/assets/icons/clean.png" alt="Clean">
+                        Limpiar
+                    </div>
                 </div>
             </section>
         </div>

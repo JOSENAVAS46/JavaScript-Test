@@ -12,7 +12,7 @@
 }
 
 img{
-    height: 75% ;
+    height: 100% ;
 }
 
 .bodySection {
@@ -47,14 +47,16 @@ img{
     align-items: center;
     background: whitesmoke;
     width: auto;
-    height: 50px;
+    height: auto;
 }
 
 .boton {
+    display: flex;
     align-items: center;
     text-align: center;
+    justify-content: center;
     width: auto;
-    height: 20px;
+    height: 25px;
     padding: 1px;
     border-radius: var(--border_radius);
     border: var(--border);
@@ -99,7 +101,7 @@ img{
     border-left: var(--border_indiv);
     table-layout: fixed;
     width: 100%;
-    height: auto;
+    height: 100%;
     border-collapse: separate;
 }
 
@@ -107,7 +109,13 @@ img{
     display: grid;
     justify-content: space-around;
     padding: 2px;
+    height: 200px !important;
+    overflow: auto;
 }
+
+.pieTabla, .cabezaTabla {
+}
+
 
 .p_view_input {
     height: 20px;
@@ -121,7 +129,7 @@ td {
     height: auto;
 }
 
-td {
+td , th{
     border: 1px dotted black;
     max-width: 100px;
     overflow: hidden;
