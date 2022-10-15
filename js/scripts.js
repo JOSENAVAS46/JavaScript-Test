@@ -56,18 +56,27 @@ btnCleanEdit.addEventListener("click", (e) => {
 btnSelectEdit.addEventListener("click", (e) => {
   var id = inputIDEdit.value;
   if (lstPersonas.length == 0) {
-    alert("No existen Personas Registradas. \nRegistre una Persona.");
+    Swal.fire({
+      title: "Aviso",
+      text: "No existen Personas Registradas. \nRegistre una Persona.",
+      icon: "warning"
+    });
     limpiarEdit();
   } else if (lstPersonas.length >= id) {
     llenarInputsEditById(id);
   } else {
-    alert("No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length);
+    Swal.fire({
+      title: "!Aviso¡",
+      text: "No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length,
+      icon: "warning"
+    });
     limpiarEdit();
   }
 });
 
 btnDel.addEventListener("click", (e) => {
-  eliminar();
+  verificarEliminar();
+
   llenarTabla();
 });
 
@@ -78,12 +87,20 @@ btnCleanDel.addEventListener("click", (e) => {
 btnSelectDel.addEventListener("click", (e) => {
   var id = inputIDDel.value;
   if (lstPersonas.length == 0) {
-    alert("No existen Personas Registradas. \nRegistre una Persona.");
+    Swal.fire({
+      title: "Aviso",
+      text: "No existen Personas Registradas. \nRegistre una Persona.",
+      icon: "warning"
+    });
     limpiarDel();
   } else if (lstPersonas.length >= id) {
     llenarViewsDelById(id);
   } else {
-    alert("No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length);
+    Swal.fire({
+      title: "!Aviso¡",
+      text: "No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length,
+      icon: "warning"
+    });
     limpiarDel();
   }
 });
@@ -154,7 +171,11 @@ function editar() {
     var correoEdit = inputCorreoEdit.value;
     var cedulaEdit = inputCedulaEdit.value;
     editarPersona(nombreEdit, apellidoEdit, correoEdit, cedulaEdit);
-    alert("Se ah editado a la Persona con el ID:" + id);
+    Swal.fire({
+      title: "!Exito¡",
+      text: "Se ah editado a la Persona con el ID:" + id,
+      icon: "success"
+    });
     limpiarEdit();
   }
 }
@@ -170,14 +191,69 @@ function editarPersona(nombreEdit, apellidoEdit, correoEdit, cedulaEdit) {
   });
 }
 
-function eliminar(){
-  let identificador = inputIDDel.value;
-  lstPersonas.forEach(p => {
-    if (p.id == identificador){
-      p.estado = "I";
+function verificarInputsLleno(input) {
+  bnd = false;
+  if (input.value.length > 0) {
+    bnd = true;
+  }
+  return bnd;
+}
+
+function verificarTamañoLista() {
+  bnd = false;
+  if (lstPersonas.length > 0) {
+    bnd = true;
+  }
+  return bnd;
+}
+
+function verificarEliminar() {
+  if (verificarInputsLleno(inputIDDel)) {
+    if (verificarTamañoLista()) {
+      Swal.fire({
+        title: "¿Desea Eliminar?",
+        text: "Seguro que desea Eliminar a la Persona con el ID: " + inputIDDel.value,
+        icon: "question",
+        showDenyButton: true,
+        confirmButtonText: 'SI',
+        denyButtonText: 'NO',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          eliminar();
+        }
+      }
+      );
+    } else {
+      Swal.fire({
+        title: "!Aviso¡",
+        text: "No existe una Persona con ese ID. \nNumero Maximo de ID: " + lstPersonas.length,
+        icon: "warning"
+      });
     }
-  });
-  alert("Se ah Eliminado a la Persona con el ID:" + identificador);
+  } else {
+    Swal.fire({
+      title: "!Aviso¡",
+      text: "Seleccione un ID",
+      icon: "warning"
+    });
+
+  }
+}
+
+function eliminar() {
+  let identificador = inputIDDel.value;
+  if (verificar(viewNombreDel.value, viewApellidoDel.value, viewCorreoDel.value, viewCedulaDel.value)) {
+    lstPersonas.forEach(p => {
+      if (p.id == identificador) {
+        p.estado = "I";
+      }
+      Swal.fire({
+        title: "!Exito¡",
+        text: "Se ah Eliminado a la Persona con el ID: " + p.id,
+        icon: "success"
+      });
+    });
+  }
 }
 
 
@@ -192,19 +268,39 @@ function verificar(nombre, apellido, correo, cedula) {
           if (cedula.length > 0) {
             bnd = true;
           } else {
-            alert("Ingrese la Cedula")
+            Swal.fire({
+              title: "!Aviso¡",
+              text: "Ingrese la Cedula",
+              icon: "warning"
+            });
           }
         } else {
-          alert("Ingrese el Correo")
+          Swal.fire({
+            title: "!Aviso¡",
+            text: "Ingrese el Correo",
+            icon: "warning"
+          });
         }
       } else {
-        alert("Ingrese el Apellido")
+        Swal.fire({
+          title: "!Aviso¡",
+          text: "Ingrese el Apellido",
+          icon: "warning"
+        });
       }
     } else {
-      alert("Ingrese el Nombre")
+      Swal.fire({
+        title: "!Aviso¡",
+        text: "Ingrese el Nombre",
+        icon: "warning"
+      });
     }
   } else {
-    alert("Ingrese los Campos");
+    Swal.fire({
+      title: "!Aviso¡",
+      text: "Ingrese todos los Campos",
+      icon: "warning"
+    });
   }
   return bnd;
 }
@@ -239,7 +335,7 @@ function llenarTabla() {
       tr.appendChild(tdCedula);
 
       cuerpoTabla.appendChild(tr);
-      if(p.estado == "A"){
+      if (p.estado == "A") {
         actualizarCont(contador);
         contador++;
       }
@@ -279,11 +375,11 @@ function mostrarObjetosLista() {
 }
 
 function setInputFilter(textbox, inputFilter, errMsg) {
-  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function(event) {
-    textbox.addEventListener(event, function(e) {
+  ["input", "keydown", "keyup", "mousedown", "mouseup", "select", "contextmenu", "drop", "focusout"].forEach(function (event) {
+    textbox.addEventListener(event, function (e) {
       if (inputFilter(this.value)) {
         // Accepted value
-        if (["keydown","mousedown","focusout"].indexOf(e.type) >= 0){
+        if (["keydown", "mousedown", "focusout"].indexOf(e.type) >= 0) {
           this.classList.remove("input-error");
           this.setCustomValidity("");
         }

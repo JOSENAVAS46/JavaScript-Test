@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="icon" type="image/png" href="/assets/icons/favicon.png" />
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <title>CRUD Persona</title>
@@ -23,17 +24,22 @@
                 <img src="/assets/icons/create.png" alt="Create">
                 Registrar Persona
             </div>
+
             <div class="contenedor">
-                <section class="ingresoDatos">
-                    <p>Nombre:</p>
-                    <input type="text" required name="nombre" id="inputNombreReg" placeholder="Pepe" />
-                    <p>Apellido:</p>
-                    <input type="text" required name="apellido" id="inputApellidoReg" placeholder="Perez" />
-                    <p>Correo:</p>
-                    <input type="text" required name="correo" id="inputCorreoReg" placeholder="pepe_perez@gmail.com" />
-                    <p>Cedula:</p>
-                    <input type="text" required name="cedula" id="inputCedulaReg" placeholder="0987654321" maxlength="10"/>
-                </section>
+                <form action="">
+                    <section class="ingresoDatos">
+                        <p>Nombre:</p>
+                        <input type="text" required="" name="nombre" id="inputNombreReg" placeholder="Pepe" />
+                        <p>Apellido:</p>
+                        <input type="text" required="" name="apellido" id="inputApellidoReg" placeholder="Perez" />
+                        <p>Correo:</p>
+                        <input type="text" required="" name="correo" id="inputCorreoReg"
+                            placeholder="pepe_perez@gmail.com" />
+                        <p>Cedula:</p>
+                        <input type="text" required="" name="cedula" id="inputCedulaReg" placeholder="0987654321"
+                            maxlength="10" pattern="[0-9]+" />
+                    </section>
+                </form>
                 <section class="seccionTabla">
                     <table class="tablaPersona">
                         <thead class="cabezaTabla">
@@ -80,14 +86,15 @@
                             <div id="btnSelectEdit" class="boton">Seleccionar</div>
                         </div>
                         <p>Nombre:</p>
-                        <input type="text" required name="nombre" id="inputNombreEdit" placeholder="Pepe" />
+                        <input type="text" required="" name="nombre" id="inputNombreEdit" placeholder="Pepe" />
                         <p>Apellido:</p>
-                        <input type="text" required name="apellido" id="inputApellidoEdit" placeholder="Perez" />
+                        <input type="text" required="" name="apellido" id="inputApellidoEdit" placeholder="Perez" />
                         <p>Correo:</p>
-                        <input type="text" required name="correo" id="inputCorreoEdit"
+                        <input type="text" required="" name="correo" id="inputCorreoEdit"
                             placeholder="pepe_perez@gmail.com" />
                         <p>Cedula:</p>
-                        <input type="text" required name="cedula" id="inputCedulaEdit" placeholder="0987654321" maxlength="10"/>
+                        <input type="text" required="" name="cedula" id="inputCedulaEdit" placeholder="0987654321"
+                            maxlength="10" />
                     </section>
                 </div>
                 <div class="botones">

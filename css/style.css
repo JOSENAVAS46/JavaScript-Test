@@ -11,6 +11,8 @@
     font-family: sans-serif;
 }
 
+
+
 img{
     height: 100% ;
 }
@@ -135,7 +137,3 @@ td , th{
     overflow: hidden;
     white-space: nowrap;
 }
-
-input-error{
-    outline: 1px solid red;
-  }
