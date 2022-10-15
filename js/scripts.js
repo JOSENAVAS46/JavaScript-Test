@@ -76,8 +76,6 @@ btnSelectEdit.addEventListener("click", (e) => {
 
 btnDel.addEventListener("click", (e) => {
   verificarEliminar();
-
-  llenarTabla();
 });
 
 btnCleanDel.addEventListener("click", (e) => {
@@ -220,7 +218,11 @@ function verificarEliminar() {
       }).then((result) => {
         if (result.isConfirmed) {
           eliminar();
+          llenarTabla();
+        } else if (result.isDenied) {
+          llenarTabla();
         }
+
       }
       );
     } else {
@@ -260,12 +262,11 @@ function eliminar() {
 
 function verificar(nombre, apellido, correo, cedula) {
   var bnd = false;
-  if (nombre.length > 0 || apellido.length > 0
-    || correo.length > 0 || cedula.length > 0) {
-    if (nombre.length > 0) {
-      if (apellido.length > 0) {
-        if (correo.length > 0) {
-          if (cedula.length > 0) {
+  if (nombre != "" || apellido != "" || correo != "" || cedula != "") {
+    if (nombre != "") {
+      if (apellido != "") {
+        if (correo != "") {
+          if (cedula != "") {
             bnd = true;
           } else {
             Swal.fire({
